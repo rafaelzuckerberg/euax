@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('dashboard/visitors', 'Api\User\VisitorApiController');
 Route::resource('dashboard/administrators', 'Api\User\AdministratorApiController');
