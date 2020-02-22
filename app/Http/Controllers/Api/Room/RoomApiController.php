@@ -5,79 +5,48 @@ namespace App\Http\Controllers\Api\Room;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Room\Room;
+
 class RoomApiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $rooms = Room::select('id', 'name')->get();
+        return response()->json($rooms);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $room = Room::create([
+            'name'  =>  $request['name']
+        ]);
+
+        if($room) {
+            return response()->json([ 'success' => true, 'message' => 'Sala cadastrado com sucesso!'], 200);
+        } else {
+            return response()->json([ 'success' => false, 'message' => 'Não foi possível cadastrar sala!'], 401);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $room = Room::find($id);
+        $update = Room::where('id', $room->id)
+            ->update([
+                'name'  =>  $request['name']
+            ]);
+
+        if($update) {
+            return response()->json([ 'success' => true, 'message' => 'Sala atualizado com sucesso!'], 200);
+        } else {
+            return response()->json([ 'success' => false, 'message' => 'Não foi possível atualizar sala!'], 401);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
