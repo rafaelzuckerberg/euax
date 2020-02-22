@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>{{ canEdit ? 'Editar' : 'Cadastrar' }} Visitantes</h2>\n\n<div class=\"example-container\">\n\n    <form [formGroup]=\"formG\" (ngSubmit)=\"submitForm()\">\n        <mat-form-field>\n            <mat-label>Digite o nome do usuário</mat-label>\n            <input type=\"text\" matInput formControlName=\"name\">\n        </mat-form-field>\n        \n        <mat-form-field>\n            <mat-label>Digite o email do usuário</mat-label>\n            <input type=\"email\" matInput formControlName=\"email\">\n        </mat-form-field>\n        \n        <mat-form-field>\n            <mat-label>Digite a senha do usuário</mat-label>\n            <input type=\"password\" matInput formControlName=\"password\">\n        </mat-form-field>\n        \n        <mat-form-field>\n            <mat-label>Digite o CPF</mat-label>\n            <input type=\"text\" matInput formControlName=\"cpf\">\n        </mat-form-field>\n\n        <mat-form-field>\n            <mat-label>Data de aniversário</mat-label>\n            <input matInput [matDatepicker]=\"picker\" formControlName=\"date_birth\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n          </mat-form-field>\n\n          <mat-form-field>\n            <mat-label>Selecione a sala</mat-label>\n            <mat-select formControlName=\"room\">\n              <mat-option value=\"1\">Sala 1</mat-option>\n              <mat-option value=\"1\">Sala 2</mat-option>\n            </mat-select>\n          </mat-form-field>\n    \n        <button mat-raised-button color=\"primary\" [disabled]=\"!formG.valid || clicked\">{{ canEdit ? 'Editar' : 'Cadastrar' }}</button>\n    </form>\n    \n    \n</div>   \n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2>{{ canEdit ? 'Editar' : 'Cadastrar' }} Visitantes</h2>\n\n<div class=\"example-container\">\n\n    <form [formGroup]=\"formG\" (ngSubmit)=\"submitForm()\">\n        <mat-form-field>\n            <mat-label>Digite o nome do usuário</mat-label>\n            <input type=\"text\" matInput formControlName=\"name\">\n        </mat-form-field>\n        \n        <mat-form-field>\n            <mat-label>Digite o email do usuário</mat-label>\n            <input type=\"email\" matInput formControlName=\"email\">\n        </mat-form-field> \n        \n        <mat-form-field>\n            <mat-label>Digite o CPF</mat-label>\n            <input type=\"text\" matInput formControlName=\"cpf\">\n        </mat-form-field>\n\n        <mat-form-field>\n            <mat-label>Data de aniversário</mat-label>\n                <input matInput [matDatepicker]=\"picker\" formControlName=\"date_birth\">\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n        </mat-form-field>\n\n          <mat-form-field>\n            <mat-label>Selecione a sala</mat-label>\n            <mat-select formControlName=\"room\">\n              <mat-option *ngFor=\"let room of rooms\" [value]='room.id'>{{ room.name }}</mat-option> \n            </mat-select>\n          </mat-form-field>\n    \n        <button mat-raised-button color=\"primary\" [disabled]=\"!formG.valid || clicked\">{{ canEdit ? 'Editar' : 'Cadastrar' }}</button>\n    </form>\n    \n    \n</div>   \n");
 
 /***/ }),
 
@@ -114,50 +114,63 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateEditVisitorComponent", function() { return CreateEditVisitorComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _shared_services_users_visitor_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../shared/services/users/visitor.service */ "./src/app/shared/services/users/visitor.service.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../shared/snackbar/snackbar.service */ "./src/app/shared/snackbar/snackbar.service.ts");
+/* harmony import */ var _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../shared/services/room/room.service */ "./src/app/shared/services/room/room.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _shared_services_users_visitor_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../shared/services/users/visitor.service */ "./src/app/shared/services/users/visitor.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
 
 
 
 
 
 var CreateEditVisitorComponent = /** @class */ (function () {
-    function CreateEditVisitorComponent(fb, service, dialogRef) {
+    function CreateEditVisitorComponent(fb, service, roomService, snackbar, dialogRef) {
         this.fb = fb;
         this.service = service;
+        this.roomService = roomService;
+        this.snackbar = snackbar;
         this.dialogRef = dialogRef;
         this.clicked = false;
         this.canEdit = false;
+        this.initializeForm();
+        this.getRooms();
     }
     CreateEditVisitorComponent.prototype.ngOnInit = function () {
-        this.initializeForm();
         if (this.service.user.id != undefined) {
+            console.log(this.service.user);
             this.setFormEdit();
             this.canEdit = true;
         }
     };
     CreateEditVisitorComponent.prototype.initializeForm = function () {
         this.formG = this.fb.group({
-            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            cpf: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            date_birth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            room: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            cpf: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            date_birth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
+            room: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required],
         });
     };
     CreateEditVisitorComponent.prototype.setFormEdit = function () {
         this.formG.get('name').setValue(this.service.user.name);
         this.formG.get('email').setValue(this.service.user.email);
+        this.formG.get('cpf').setValue(this.service.user.cpf);
         this.formG.get('email').disable({ onlySelf: true });
-        this.formG.get('password').setValidators(null);
+    };
+    CreateEditVisitorComponent.prototype.getRooms = function () {
+        var _this = this;
+        this.roomService.getRooms()
+            .subscribe(function (res) {
+            _this.rooms = res;
+        });
     };
     CreateEditVisitorComponent.prototype.submitForm = function () {
         if (this.service.user.id == undefined) {
-            console.log(this.formG.value);
-            // this.save();
+            this.save();
         }
         else {
             this.edit();
@@ -168,10 +181,19 @@ var CreateEditVisitorComponent = /** @class */ (function () {
         this.clicked = true;
         this.service.addUser(this.formG.value)
             .subscribe(function (res) {
+            console.log(res);
             if (res['success']) {
+                _this.snackbar.openSnackBar(res['message']);
                 _this.dialogRef.close(true);
                 _this.clicked = false;
             }
+            else {
+                _this.snackbar.openSnackBar(res['message']);
+                _this.clicked = false;
+                _this.formG.get('room').reset();
+            }
+        }, function (error) {
+            console.log(error);
         });
     };
     CreateEditVisitorComponent.prototype.edit = function () {
@@ -181,23 +203,30 @@ var CreateEditVisitorComponent = /** @class */ (function () {
         this.service.updateUser(this.formG.value)
             .subscribe(function (res) {
             if (res['success']) {
+                _this.snackbar.openSnackBar(res['message']);
                 _this.dialogRef.close(true);
                 _this.clicked = false;
             }
         });
     };
     CreateEditVisitorComponent.ctorParameters = function () { return [
-        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
-        { type: _shared_services_users_visitor_service__WEBPACK_IMPORTED_MODULE_2__["VisitorService"] },
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] },
+        { type: _shared_services_users_visitor_service__WEBPACK_IMPORTED_MODULE_4__["VisitorService"] },
+        { type: _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_2__["RoomService"] },
+        { type: _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] }
     ]; };
     CreateEditVisitorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_6__["Component"])({
             selector: 'app-create-edit-visitor',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./create-edit-visitor.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/users/visitor/create-edit-visitor/create-edit-visitor.component.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./create-edit-visitor.component.css */ "./src/app/users/visitor/create-edit-visitor/create-edit-visitor.component.css")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _shared_services_users_visitor_service__WEBPACK_IMPORTED_MODULE_2__["VisitorService"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"],
+            _shared_services_users_visitor_service__WEBPACK_IMPORTED_MODULE_4__["VisitorService"],
+            _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_2__["RoomService"],
+            _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"]])
     ], CreateEditVisitorComponent);
     return CreateEditVisitorComponent;
 }());

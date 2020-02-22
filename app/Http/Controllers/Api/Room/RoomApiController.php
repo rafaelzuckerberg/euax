@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Room;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Room\Room;
 
@@ -12,7 +13,11 @@ class RoomApiController extends Controller
     
     public function index()
     {
-        $rooms = Room::select('id', 'name')->get();
+        $rooms = Room::select('rooms.id', 'rooms.name', DB::raw("(SELECT COUNT(*)
+        FROM visitor_rooms 
+            WHERE room_id = rooms.id 
+                GROUP BY room_id) as quantidade"))  
+                        ->get();
         return response()->json($rooms);
     }
 

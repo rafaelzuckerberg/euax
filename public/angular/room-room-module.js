@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" fxLayout=\"row\" fxLayoutAlign=\"center none\">\n    <div fxFlex=\"95%\">\n  \n      <mat-card>\n        <mat-card-content>\n          <h2>Salas</h2>\n\n          <mat-form-field>\n            <mat-label>Filter</mat-label>\n            <input matInput (keyup)=\"applyFilter($event)\" placeholder=\"Pesquisar por Administradores\">\n          </mat-form-field>\n  \n          <table mat-table [dataSource]=\"dataSource\" matSort>\n  \n            <!-- ID Column -->\n            <ng-container matColumnDef=\"id\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>\n              <td mat-cell *matCellDef=\"let user\"> {{ user.id }} </td>\n            </ng-container>\n          \n            <!-- Name Column -->\n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>\n              <td mat-cell *matCellDef=\"let user\"> {{ user.name }} </td>\n            </ng-container>\n        \n            \n            <!-- Icon Column -->\n            <ng-container matColumnDef=\"icon\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>\n              <td mat-cell *matCellDef=\"let user\"> \n                <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalCreate(user)\">edit</mat-icon>\n                <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalDelete(user)\">delete</mat-icon>\n              </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n          </table>\n\n          <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\n          \n        </mat-card-content>\n      </mat-card>\n  \n    </div>\n  </div>\n\n\n  <div class=\"example-button-row\"> \n    <button mat-fab color=\"primary\" aria-label=\"Example icon-button with a heart icon\" (click)=\"openModalCreate(null)\">\n      <mat-icon>add</mat-icon>\n    </button> \n  </div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" fxLayout=\"row\" fxLayoutAlign=\"center none\">\n    <div fxFlex=\"95%\">\n  \n      <mat-card>\n        <mat-card-content>\n          <h2>Salas</h2>\n\n          <mat-form-field>\n            <mat-label>Filter</mat-label>\n            <input matInput (keyup)=\"applyFilter($event)\" placeholder=\"Pesquisar por Administradores\">\n          </mat-form-field>\n  \n          <table mat-table [dataSource]=\"dataSource\" matSort>\n  \n            <!-- ID Column -->\n            <ng-container matColumnDef=\"id\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>\n              <td mat-cell *matCellDef=\"let user\"> {{ user.id }} </td>\n            </ng-container>\n          \n            <!-- Name Column -->\n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>\n              <td mat-cell *matCellDef=\"let user\"> {{ user.name }} </td>\n            </ng-container>\n\n             <!-- Quantidade de usuários Column -->\n             <ng-container matColumnDef=\"quant\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantidade de visitantes </th>\n              <td mat-cell *matCellDef=\"let user\"> {{ user['quantidade'] != null ? user['quantidade'] : 0 }} </td>\n            </ng-container>\n            \n            <!-- Status de usuários Column -->\n             <ng-container matColumnDef=\"status\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>\n              <td mat-cell *matCellDef=\"let user\"> {{ user['quantidade'] == 3 ? 'Ocupada' : 'Liberada' }} </td>\n            </ng-container>\n        \n            \n            <!-- Icon Column -->\n            <ng-container matColumnDef=\"icon\">\n              <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>\n              <td mat-cell *matCellDef=\"let user\"> \n                <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalCreate(user)\">edit</mat-icon>\n                <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalDelete(user)\">delete</mat-icon>\n              </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n          </table>\n\n          <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\n          \n        </mat-card-content>\n      </mat-card>\n  \n    </div>\n  </div>\n\n\n  <div class=\"example-button-row\"> \n    <button mat-fab color=\"primary\" aria-label=\"Example icon-button with a heart icon\" (click)=\"openModalCreate(null)\">\n      <mat-icon>add</mat-icon>\n    </button> \n  </div>");
 
 /***/ }),
 
@@ -63,19 +63,22 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateEditRoomComponent", function() { return CreateEditRoomComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../shared/services/room/room.service */ "./src/app/shared/services/room/room.service.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../shared/snackbar/snackbar.service */ "./src/app/shared/snackbar/snackbar.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../shared/services/room/room.service */ "./src/app/shared/services/room/room.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
 
 
 
 
 
 var CreateEditRoomComponent = /** @class */ (function () {
-    function CreateEditRoomComponent(fb, service, dialogRef) {
+    function CreateEditRoomComponent(fb, service, snackbar, dialogRef) {
         this.fb = fb;
         this.service = service;
+        this.snackbar = snackbar;
         this.dialogRef = dialogRef;
         this.clicked = false;
         this.canEdit = false;
@@ -90,7 +93,7 @@ var CreateEditRoomComponent = /** @class */ (function () {
     };
     CreateEditRoomComponent.prototype.initializeForm = function () {
         this.formG = this.fb.group({
-            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
         });
     };
     CreateEditRoomComponent.prototype.setFormEdit = function () {
@@ -110,9 +113,12 @@ var CreateEditRoomComponent = /** @class */ (function () {
         this.service.addRoom(this.formG.value)
             .subscribe(function (res) {
             if (res['success']) {
+                _this.snackbar.openSnackBar(res['message']);
                 _this.dialogRef.close(true);
                 _this.clicked = false;
             }
+        }, function (error) {
+            console.log(error);
         });
     };
     CreateEditRoomComponent.prototype.edit = function () {
@@ -122,23 +128,28 @@ var CreateEditRoomComponent = /** @class */ (function () {
         this.service.updateRoom(this.formG.value)
             .subscribe(function (res) {
             if (res['success']) {
+                _this.snackbar.openSnackBar(res['message']);
                 _this.dialogRef.close(true);
                 _this.clicked = false;
             }
         });
     };
     CreateEditRoomComponent.ctorParameters = function () { return [
-        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
-        { type: _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_2__["RoomService"] },
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+        { type: _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_3__["RoomService"] },
+        { type: _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] }
     ]; };
     CreateEditRoomComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_5__["Component"])({
             selector: 'app-create-edit-room',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./create-edit-room.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/room/create-edit-room/create-edit-room.component.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./create-edit-room.component.css */ "./src/app/room/create-edit-room/create-edit-room.component.css")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_2__["RoomService"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
+            _shared_services_room_room_service__WEBPACK_IMPORTED_MODULE_3__["RoomService"],
+            _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"]])
     ], CreateEditRoomComponent);
     return CreateEditRoomComponent;
 }());
@@ -246,7 +257,7 @@ var ListRoomsComponent = /** @class */ (function () {
         this.notificationService = notificationService;
         this.titleService = titleService;
         this.dialog = dialog;
-        this.displayedColumns = ['id', 'name', 'icon'];
+        this.displayedColumns = ['id', 'name', 'quant', 'status', 'icon'];
     }
     ListRoomsComponent.prototype.ngOnInit = function () {
         this.titleService.setTitle('Stark - Salas');
@@ -257,6 +268,7 @@ var ListRoomsComponent = /** @class */ (function () {
         var _this = this;
         this.service.getRooms()
             .subscribe(function (res) {
+            console.log(res);
             _this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableDataSource"](res);
             _this.dataSource.paginator = _this.paginator;
             _this.dataSource.sort = _this.sort;
@@ -437,57 +449,6 @@ var RoomModule = /** @class */ (function () {
         })
     ], RoomModule);
     return RoomModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shared/services/room/room.service.ts":
-/*!******************************************************!*\
-  !*** ./src/app/shared/services/room/room.service.ts ***!
-  \******************************************************/
-/*! exports provided: RoomService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoomService", function() { return RoomService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-
-
-var RoomService = /** @class */ (function () {
-    function RoomService(http) {
-        this.http = http;
-        this.url = 'rooms';
-    }
-    RoomService.prototype.getRooms = function () {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url);
-    };
-    RoomService.prototype.addRoom = function (room) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url, room);
-    };
-    RoomService.prototype.updateRoom = function (room) {
-        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url + ("/" + room.id), room);
-    };
-    RoomService.prototype.deleteRoom = function (room) {
-        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url + ("/" + room.id));
-    };
-    RoomService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-    ]; };
-    RoomService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], RoomService);
-    return RoomService;
 }());
 
 

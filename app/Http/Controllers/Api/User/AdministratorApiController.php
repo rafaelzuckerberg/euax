@@ -15,7 +15,9 @@ class AdministratorApiController extends Controller
     
     public function index()
     {
-        $administrators = User::all();
+        $administrators = User::select()
+                        ->where('users.profile', 1)
+                        ->get();
         return response()->json($administrators);
     }
 
@@ -36,11 +38,12 @@ class AdministratorApiController extends Controller
             'status'    =>      1,
         ]);
 
-        if($user) {
-            return response()->json([ 'success' => true, 'message' => 'Administrador cadastrado com sucesso!'], 200);
+        if($user) { 
+            $response = [ 'success' => true, 'message' => 'Administrador cadastrado com sucesso!', 'status' => 200 ];
         } else {
-            return response()->json([ 'success' => false, 'message' => 'Não foi possível cadastrar administrador!'], 401);
+            $response = [ 'success' => false, 'message' => 'Não foi possível cadastrar administrador!', 'status' => 401 ]; 
         }
+        return response()->json($response);
     }
 
     
@@ -56,13 +59,14 @@ class AdministratorApiController extends Controller
         $update = User::where('id', $user->id)
             ->update([
                 'name'  =>  $request['name']
-            ]);
+            ]);  
 
-        if($update) {
-            return response()->json([ 'success' => true, 'message' => 'Administrador atualizado com sucesso!'], 200);
+        if($update) { 
+            $response = [ 'success' => true, 'message' => 'Administrador atualizado com sucesso', 'status' => 200 ];
         } else {
-            return response()->json([ 'success' => false, 'message' => 'Não foi possível atualizar administrador!'], 401);
+            $response = [ 'success' => false, 'message' => 'Não foi possível atualizar administrador!', 'status' => 401 ]; 
         }
+        return response()->json($response);
     }
 
     
@@ -70,12 +74,13 @@ class AdministratorApiController extends Controller
     {
         $user = User::find($id);
 
-        $delete = $user->delete();
+        $delete = $user->delete(); 
 
-        if($delete) {
-            return response()->json([ 'success' => true, 'message' => 'Administrador deletado com sucesso!'], 200);
+        if($delete) { 
+            $response = [ 'success' => true, 'message' => 'Administrador deletado com sucesso', 'status' => 200 ];
         } else {
-            return response()->json([ 'success' => false, 'message' => 'Não foi possível deletar administrador!'], 401);
+            $response = [ 'success' => false, 'message' => 'Não foi possível deletar administrador!', 'status' => 401 ]; 
         }
+        return response()->json($response);
     }
 }

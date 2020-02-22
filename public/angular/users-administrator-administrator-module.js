@@ -222,19 +222,22 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateEditAdministratorComponent", function() { return CreateEditAdministratorComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _shared_services_users_administrator_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../shared/services/users/administrator.service */ "./src/app/shared/services/users/administrator.service.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../shared/snackbar/snackbar.service */ "./src/app/shared/snackbar/snackbar.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _shared_services_users_administrator_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../shared/services/users/administrator.service */ "./src/app/shared/services/users/administrator.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
 
 
 
 
 
 var CreateEditAdministratorComponent = /** @class */ (function () {
-    function CreateEditAdministratorComponent(fb, service, dialogRef) {
+    function CreateEditAdministratorComponent(fb, service, snackbar, dialogRef) {
         this.fb = fb;
         this.service = service;
+        this.snackbar = snackbar;
         this.dialogRef = dialogRef;
         this.clicked = false;
         this.canEdit = false;
@@ -249,9 +252,9 @@ var CreateEditAdministratorComponent = /** @class */ (function () {
     };
     CreateEditAdministratorComponent.prototype.initializeForm = function () {
         this.formG = this.fb.group({
-            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
         });
     };
     CreateEditAdministratorComponent.prototype.setFormEdit = function () {
@@ -274,6 +277,7 @@ var CreateEditAdministratorComponent = /** @class */ (function () {
         this.service.addUser(this.formG.value)
             .subscribe(function (res) {
             if (res['success']) {
+                _this.snackbar.openSnackBar(res['message']);
                 _this.dialogRef.close(true);
                 _this.clicked = false;
             }
@@ -286,23 +290,28 @@ var CreateEditAdministratorComponent = /** @class */ (function () {
         this.service.updateUser(this.formG.value)
             .subscribe(function (res) {
             if (res['success']) {
+                _this.snackbar.openSnackBar(res['message']);
                 _this.dialogRef.close(true);
                 _this.clicked = false;
             }
         });
     };
     CreateEditAdministratorComponent.ctorParameters = function () { return [
-        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
-        { type: _shared_services_users_administrator_service__WEBPACK_IMPORTED_MODULE_2__["AdministratorService"] },
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+        { type: _shared_services_users_administrator_service__WEBPACK_IMPORTED_MODULE_3__["AdministratorService"] },
+        { type: _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] }
     ]; };
     CreateEditAdministratorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_5__["Component"])({
             selector: 'app-create-edit-administrator',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./create-edit-administrator.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/users/administrator/create-edit-administrator/create-edit-administrator.component.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./create-edit-administrator.component.css */ "./src/app/users/administrator/create-edit-administrator/create-edit-administrator.component.css")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _shared_services_users_administrator_service__WEBPACK_IMPORTED_MODULE_2__["AdministratorService"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
+            _shared_services_users_administrator_service__WEBPACK_IMPORTED_MODULE_3__["AdministratorService"],
+            _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"]])
     ], CreateEditAdministratorComponent);
     return CreateEditAdministratorComponent;
 }());
@@ -414,7 +423,7 @@ var ListAdministratorsComponent = /** @class */ (function () {
     }
     ListAdministratorsComponent.prototype.ngOnInit = function () {
         this.titleService.setTitle('Stark - Administradores');
-        this.logger.log('Customers loaded');
+        this.logger.log('Adminsitrators loaded');
         this.getUsers();
     };
     ListAdministratorsComponent.prototype.getUsers = function () {
