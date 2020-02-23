@@ -498,16 +498,18 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListProjectsComponent", function() { return ListProjectsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _shared_confirm_dialog_confirm_dialog_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../shared/confirm-dialog/confirm-dialog.component */ "./src/app/shared/confirm-dialog/confirm-dialog.component.ts");
-/* harmony import */ var _create_edit_project_create_edit_project_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../create-edit-project/create-edit-project.component */ "./src/app/projects/project/create-edit-project/create-edit-project.component.ts");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var src_app_core_services_notification_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/core/services/notification.service */ "./src/app/core/services/notification.service.ts");
-/* harmony import */ var ngx_logger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-logger */ "./node_modules/ngx-logger/fesm5/ngx-logger.js");
-/* harmony import */ var _shared_services_project_project_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../../shared/services/project/project.service */ "./src/app/shared/services/project/project.service.ts");
-/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/sort */ "./node_modules/@angular/material/esm5/sort.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../shared/snackbar/snackbar.service */ "./src/app/shared/snackbar/snackbar.service.ts");
+/* harmony import */ var _shared_confirm_dialog_confirm_dialog_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../shared/confirm-dialog/confirm-dialog.component */ "./src/app/shared/confirm-dialog/confirm-dialog.component.ts");
+/* harmony import */ var _create_edit_project_create_edit_project_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../create-edit-project/create-edit-project.component */ "./src/app/projects/project/create-edit-project/create-edit-project.component.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var src_app_core_services_notification_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/core/services/notification.service */ "./src/app/core/services/notification.service.ts");
+/* harmony import */ var ngx_logger__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-logger */ "./node_modules/ngx-logger/fesm5/ngx-logger.js");
+/* harmony import */ var _shared_services_project_project_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../shared/services/project/project.service */ "./src/app/shared/services/project/project.service.ts");
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/sort */ "./node_modules/@angular/material/esm5/sort.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 
@@ -520,12 +522,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ListProjectsComponent = /** @class */ (function () {
-    function ListProjectsComponent(service, logger, notificationService, titleService, dialog) {
+    function ListProjectsComponent(service, logger, notificationService, titleService, dialog, snackbar) {
         this.service = service;
         this.logger = logger;
         this.notificationService = notificationService;
         this.titleService = titleService;
         this.dialog = dialog;
+        this.snackbar = snackbar;
         this.displayedColumns = ['id', 'name', 'begin_date', 'end_date', 'progress', 'status', 'icon'];
     }
     ListProjectsComponent.prototype.ngOnInit = function () {
@@ -538,7 +541,7 @@ var ListProjectsComponent = /** @class */ (function () {
         this.service.getProjects()
             .subscribe(function (res) {
             console.log(res);
-            _this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableDataSource"](res);
+            _this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_9__["MatTableDataSource"](res);
             _this.dataSource.paginator = _this.paginator;
             _this.dataSource.sort = _this.sort;
         });
@@ -546,7 +549,7 @@ var ListProjectsComponent = /** @class */ (function () {
     ListProjectsComponent.prototype.openModalCreate = function (project) {
         var _this = this;
         this.service.project = Object.assign({}, project);
-        var dialogRef = this.dialog.open(_create_edit_project_create_edit_project_component__WEBPACK_IMPORTED_MODULE_2__["CreateEditProjectComponent"], {
+        var dialogRef = this.dialog.open(_create_edit_project_create_edit_project_component__WEBPACK_IMPORTED_MODULE_3__["CreateEditProjectComponent"], {
             height: '320px',
             width: '450px',
         });
@@ -559,7 +562,7 @@ var ListProjectsComponent = /** @class */ (function () {
     ListProjectsComponent.prototype.openModalDelete = function (project) {
         var _this = this;
         this.service.project = Object.assign({}, project);
-        var dialogRef = this.dialog.open(_shared_confirm_dialog_confirm_dialog_component__WEBPACK_IMPORTED_MODULE_1__["ConfirmDialogComponent"], {
+        var dialogRef = this.dialog.open(_shared_confirm_dialog_confirm_dialog_component__WEBPACK_IMPORTED_MODULE_2__["ConfirmDialogComponent"], {
             height: '190px',
             width: '450px',
             data: {
@@ -577,8 +580,8 @@ var ListProjectsComponent = /** @class */ (function () {
         this.service.delete(this.service.project)
             .subscribe(function (res) {
             if (res) {
-                _this.delete();
-                console.log(res);
+                _this.getProjects();
+                _this.snackbar.openSnackBar(res['message']);
             }
         });
     };
@@ -590,31 +593,33 @@ var ListProjectsComponent = /** @class */ (function () {
         }
     };
     ListProjectsComponent.ctorParameters = function () { return [
-        { type: _shared_services_project_project_service__WEBPACK_IMPORTED_MODULE_6__["ProjectService"] },
-        { type: ngx_logger__WEBPACK_IMPORTED_MODULE_5__["NGXLogger"] },
-        { type: src_app_core_services_notification_service__WEBPACK_IMPORTED_MODULE_4__["NotificationService"] },
-        { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["Title"] },
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatDialog"] }
+        { type: _shared_services_project_project_service__WEBPACK_IMPORTED_MODULE_7__["ProjectService"] },
+        { type: ngx_logger__WEBPACK_IMPORTED_MODULE_6__["NGXLogger"] },
+        { type: src_app_core_services_notification_service__WEBPACK_IMPORTED_MODULE_5__["NotificationService"] },
+        { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["Title"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatDialog"] },
+        { type: _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_9__["ViewChild"])(_angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSort"], { static: true }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSort"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_10__["ViewChild"])(_angular_material_sort__WEBPACK_IMPORTED_MODULE_8__["MatSort"], { static: true }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material_sort__WEBPACK_IMPORTED_MODULE_8__["MatSort"])
     ], ListProjectsComponent.prototype, "sort", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_9__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_10__["MatPaginator"], { static: true }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatPaginator"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_10__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_11__["MatPaginator"], { static: true }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatPaginator"])
     ], ListProjectsComponent.prototype, "paginator", void 0);
     ListProjectsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_9__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_10__["Component"])({
             selector: 'app-list-projects',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./list-projects.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/projects/project/list-projects/list-projects.component.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./list-projects.component.css */ "./src/app/projects/project/list-projects/list-projects.component.css")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_services_project_project_service__WEBPACK_IMPORTED_MODULE_6__["ProjectService"],
-            ngx_logger__WEBPACK_IMPORTED_MODULE_5__["NGXLogger"],
-            src_app_core_services_notification_service__WEBPACK_IMPORTED_MODULE_4__["NotificationService"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["Title"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatDialog"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_services_project_project_service__WEBPACK_IMPORTED_MODULE_7__["ProjectService"],
+            ngx_logger__WEBPACK_IMPORTED_MODULE_6__["NGXLogger"],
+            src_app_core_services_notification_service__WEBPACK_IMPORTED_MODULE_5__["NotificationService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["Title"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatDialog"],
+            _shared_snackbar_snackbar_service__WEBPACK_IMPORTED_MODULE_1__["SnackbarService"]])
     ], ListProjectsComponent);
     return ListProjectsComponent;
 }());

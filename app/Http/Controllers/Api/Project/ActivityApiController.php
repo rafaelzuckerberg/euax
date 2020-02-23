@@ -39,12 +39,29 @@ class ActivityApiController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $request['begin_date'] = date('Y-m-d H:i:s', strtotime($request['begin_date'])); 
+        $request['end_date'] = date('Y-m-d H:i:s', strtotime($request['end_date'])); 
+        $activity = Activity::where('id', $id)
+                    ->update($request->all());
+
+        if($activity) { 
+            $response = [ 'success' => true, 'message' => 'Atividade alterado com sucesso!', 'status' => 200 ];
+        } else {
+            $response = [ 'success' => false, 'message' => 'Não foi possível alterar atividade!', 'status' => 401 ]; 
+        }
+        return response()->json($response);
     }
 
 
     public function destroy($id)
     {
-        //
+        $activity = Activity::find($id);
+
+        if($activity->delete()) { 
+            $response = [ 'success' => true, 'message' => 'Atividade deletada com sucesso!', 'status' => 200 ];
+        } else {
+            $response = [ 'success' => false, 'message' => 'Não foi possível deletar atividade!', 'status' => 401 ]; 
+        }
+        return response()->json($response);
     }
 }

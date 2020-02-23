@@ -52,6 +52,13 @@ class ProjectApiController extends Controller
  
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+
+        if($project->delete()) { 
+            $response = [ 'success' => true, 'message' => 'Projeto delete com sucesso!', 'status' => 200 ];
+        } else {
+            $response = [ 'success' => false, 'message' => 'Não foi possível delete projeto!', 'status' => 401 ]; 
+        }
+        return response()->json($response);
     }
 }
