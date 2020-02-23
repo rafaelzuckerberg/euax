@@ -16,7 +16,7 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->string('project_name', 100);
+            $table->string('activity_name', 100);
             $table->string('begin_date');
             $table->string('end_date')->nullable(); 
             $table->boolean('finished'); 

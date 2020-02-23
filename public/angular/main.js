@@ -334,7 +334,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"navbar-container\" [class.example-is-mobile]=\"mobileQuery.matches\">\r\n\r\n  <!-- Top navbar -->\r\n  <mat-toolbar class=\"navbar\" color=\"primary\">\r\n\r\n    <button mat-icon-button (click)=\"snav.toggle()\">\r\n      <mat-icon>menu</mat-icon>\r\n    </button>\r\n\r\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\" matTooltip=\"Home\">\r\n      <h1>\r\n        Tony Stark\r\n      </h1>\r\n    </a>\r\n\r\n    <span class=\"navbar-spacer\"></span>\r\n\r\n    <button mat-icon-button [matMenuTriggerFor]=\"notificationMenu\">\r\n      <mat-icon matBadge=\"2\" matBadgeColor=\"accent\">notifications</mat-icon>\r\n    </button>\r\n    <mat-menu #notificationMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item>\r\n        <span>You have new tasks</span>\r\n      </a>\r\n      <a mat-menu-item>\r\n        <span>You have a new message</span>\r\n      </a>\r\n\r\n    </mat-menu>\r\n\r\n\r\n\r\n    <button mat-button [matMenuTriggerFor]=\"userMenu\">\r\n      <mat-icon>person</mat-icon>\r\n      <span fxShow fxHide.xs>\r\n        {{userName}}\r\n      </span>\r\n    </button>\r\n    <mat-menu #userMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item [routerLink]=\"['/account/profile']\">\r\n        <mat-icon>person</mat-icon>\r\n        <span>Account</span>\r\n      </a>\r\n\r\n      <a mat-menu-item [routerLink]=\"['/auth/login']\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </a>\r\n\r\n      <!-- <button mat-menu-item (click)=\"logout()\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </button> -->\r\n\r\n    </mat-menu>\r\n\r\n  </mat-toolbar>\r\n\r\n  <mat-sidenav-container class=\"navbar-sidenav-container\">\r\n    <!-- Side nav -->\r\n    <mat-sidenav #snav [opened]=\"!mobileQuery.matches\" [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n      [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" class=\"sidenav\">\r\n\r\n      <mat-nav-list>\r\n        <h3 mat-subheader>Home</h3>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            dashboard\r\n          </mat-icon>\r\n          <p mat-line> Dashboard </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/administradores']\">\r\n          <mat-icon mat-list-icon>person</mat-icon>\r\n          <p mat-line> Administradores </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/salas']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            business\r\n          </mat-icon>\r\n          <p mat-line> Salas </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/visitantes']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            people\r\n          </mat-icon>\r\n          <p mat-line> Visitantes </p>\r\n        </a>\r\n       \r\n        <a mat-list-item [routerLink]=\"['/dashboard/checkout']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            done_outline\r\n          </mat-icon>\r\n          <p mat-line> Check-Outs </p>\r\n        </a> \r\n\r\n        <mat-divider></mat-divider>\r\n\r\n      </mat-nav-list>\r\n\r\n    </mat-sidenav>\r\n\r\n    <!-- Main content -->\r\n    <mat-sidenav-content class=\"sidenav-content\">\r\n\r\n      <div class=\"progress-bar-container\">\r\n        <mat-progress-bar color=\"accent\" mode=\"indeterminate\" *ngIf=\"spinnerService.visibility | async\">\r\n        </mat-progress-bar>\r\n        <!-- <mat-spinner class=\"spinner\" [diameter]=\"50\" *ngIf=\"showSpinner\"></mat-spinner> -->\r\n      </div>\r\n\r\n\r\n      <router-outlet></router-outlet>\r\n\r\n    </mat-sidenav-content>\r\n  </mat-sidenav-container>\r\n\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"navbar-container\" [class.example-is-mobile]=\"mobileQuery.matches\">\r\n\r\n  <!-- Top navbar -->\r\n  <mat-toolbar class=\"navbar\" color=\"primary\">\r\n\r\n    <button mat-icon-button (click)=\"snav.toggle()\">\r\n      <mat-icon>menu</mat-icon>\r\n    </button>\r\n\r\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\" matTooltip=\"Home\">\r\n      <h1>\r\n        Tony Stark\r\n      </h1>\r\n    </a>\r\n\r\n    <span class=\"navbar-spacer\"></span>\r\n\r\n    <button mat-icon-button [matMenuTriggerFor]=\"notificationMenu\">\r\n      <mat-icon matBadge=\"2\" matBadgeColor=\"accent\">notifications</mat-icon>\r\n    </button>\r\n    <mat-menu #notificationMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item>\r\n        <span>You have new tasks</span>\r\n      </a>\r\n      <a mat-menu-item>\r\n        <span>You have a new message</span>\r\n      </a>\r\n\r\n    </mat-menu>\r\n\r\n\r\n\r\n    <button mat-button [matMenuTriggerFor]=\"userMenu\">\r\n      <mat-icon>person</mat-icon>\r\n      <span fxShow fxHide.xs>\r\n        {{userName}}\r\n      </span>\r\n    </button>\r\n    <mat-menu #userMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item [routerLink]=\"['/account/profile']\">\r\n        <mat-icon>person</mat-icon>\r\n        <span>Account</span>\r\n      </a>\r\n\r\n      <a mat-menu-item [routerLink]=\"['/auth/login']\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </a>\r\n\r\n      <!-- <button mat-menu-item (click)=\"logout()\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </button> -->\r\n\r\n    </mat-menu>\r\n\r\n  </mat-toolbar>\r\n\r\n  <mat-sidenav-container class=\"navbar-sidenav-container\">\r\n    <!-- Side nav -->\r\n    <mat-sidenav #snav [opened]=\"!mobileQuery.matches\" [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n      [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" class=\"sidenav\">\r\n\r\n      <mat-nav-list>\r\n        <h3 mat-subheader>Home</h3>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            dashboard\r\n          </mat-icon>\r\n          <p mat-line> Dashboard </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/administradores']\">\r\n          <mat-icon mat-list-icon>person</mat-icon>\r\n          <p mat-line> Administradores </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/projetos']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            assignment\r\n          </mat-icon>\r\n          <p mat-line> Projetos </p>\r\n        </a>\r\n        \r\n        <a mat-list-item [routerLink]=\"['/dashboard/atividades']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            assignment_turned_in\r\n          </mat-icon>\r\n          <p mat-line> Atividades </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/salas']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            business\r\n          </mat-icon>\r\n          <p mat-line> Salas </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/visitantes']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            people\r\n          </mat-icon>\r\n          <p mat-line> Visitantes </p>\r\n        </a>\r\n       \r\n        <a mat-list-item [routerLink]=\"['/dashboard/checkout']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            done_outline\r\n          </mat-icon>\r\n          <p mat-line> Check-Outs </p>\r\n        </a> \r\n\r\n        <mat-divider></mat-divider>\r\n\r\n      </mat-nav-list>\r\n\r\n    </mat-sidenav>\r\n\r\n    <!-- Main content -->\r\n    <mat-sidenav-content class=\"sidenav-content\">\r\n\r\n      <div class=\"progress-bar-container\">\r\n        <!-- <mat-progress-bar color=\"accent\" mode=\"indeterminate\" *ngIf=\"spinnerService.visibility | async\">\r\n        </mat-progress-bar> -->\r\n        <mat-spinner class=\"spinner\" [diameter]=\"50\" *ngIf=\"showSpinner\"></mat-spinner>\r\n      </div>\r\n\r\n\r\n      <router-outlet></router-outlet>\r\n\r\n    </mat-sidenav-content>\r\n  </mat-sidenav-container>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -604,6 +604,11 @@ var map = {
 		"./src/app/icons/icons.module.ts",
 		"icons-icons-module"
 	],
+	"./projects/projects.module": [
+		"./src/app/projects/projects.module.ts",
+		"common",
+		"projects-projects-module"
+	],
 	"./room/room.module": [
 		"./src/app/room/room.module.ts",
 		"common",
@@ -680,6 +685,11 @@ var appRoutes = [
         canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
     },
     {
+        path: 'dashboard',
+        loadChildren: './projects/projects.module#ProjectsModule',
+        canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
+    },
+    {
         path: 'dashboard/visitantes',
         loadChildren: './users/visitor/visitor.module#VisitorModule',
         canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
@@ -703,27 +713,7 @@ var appRoutes = [
     //     path: 'users',
     //     loadChildren: './users/users.module#UsersModule',
     //     canActivate: [AuthGuard]
-    // },
-    {
-        path: 'account',
-        loadChildren: './account/account.module#AccountModule',
-        canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
-    },
-    {
-        path: 'icons',
-        loadChildren: './icons/icons.module#IconsModule',
-        canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
-    },
-    {
-        path: 'typography',
-        loadChildren: './typography/typography.module#TypographyModule',
-        canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
-    },
-    {
-        path: 'about',
-        loadChildren: './about/about.module#AboutModule',
-        canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
-    },
+    // }, 
     {
         path: '**',
         redirectTo: 'dashboard',
