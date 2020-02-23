@@ -15,12 +15,16 @@ class CreateVisitorRoomsTable extends Migration
     {
         Schema::create('visitor_rooms', function (Blueprint $table) {
             // $table->bigIncrements('id'); 
-
+            
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
-
+            
             $table->unsignedBigInteger('room_id');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade'); 
+            
+            $table->date('checkin'); 
+            $table->date('checkout')->nullable(); 
+
         });
     }
 

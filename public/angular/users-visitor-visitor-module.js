@@ -35,58 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" fxLayout=\"row\" fxLayoutAlign=\"center none\">\n  <div fxFlex=\"95%\">\n\n    <mat-card>\n      <mat-card-content>\n        <h2>Visitantes</h2>\n\n        <mat-form-field>\n          <mat-label>Filter</mat-label>\n          <input matInput (keyup)=\"applyFilter($event)\" placeholder=\"Pesquisar por Administradores\">\n        </mat-form-field>\n\n        <table mat-table [dataSource]=\"dataSource\" matSort>\n\n          <!-- Position Column -->\n          <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.id }} </td>\n          </ng-container>\n        \n          <!-- Name Column -->\n          <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.name }} </td>\n          </ng-container>\n        \n          <!-- Email Column -->\n          <ng-container matColumnDef=\"email\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.email }} </td>\n          </ng-container>\n        \n          <!-- Status Column -->\n          <ng-container matColumnDef=\"status\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.status == 1 ? 'Ativo' : 'Inativo' }} </td>\n          </ng-container>\n          \n          <!-- Icon Column -->\n          <ng-container matColumnDef=\"icon\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>\n            <td mat-cell *matCellDef=\"let user\"> \n              <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalCreate(user)\">edit</mat-icon>\n              <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalDelete(user)\">delete</mat-icon>\n            </td>\n          </ng-container>\n        \n          <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n          <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n\n        <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\n        \n      </mat-card-content>\n    </mat-card>\n\n  </div>\n</div>\n\n\n<div class=\"example-button-row\"> \n  <button mat-fab color=\"primary\" aria-label=\"Example icon-button with a heart icon\" (click)=\"openModalCreate(null)\">\n    <mat-icon>add</mat-icon>\n  </button> \n</div>");
-
-/***/ }),
-
-/***/ "./src/app/shared/services/users/visitor.service.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/shared/services/users/visitor.service.ts ***!
-  \**********************************************************/
-/*! exports provided: VisitorService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VisitorService", function() { return VisitorService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-
-
-var VisitorService = /** @class */ (function () {
-    function VisitorService(http) {
-        this.http = http;
-        this.url = 'visitors';
-    }
-    VisitorService.prototype.getUsers = function () {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url);
-    };
-    VisitorService.prototype.addUser = function (user) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url, user);
-    };
-    VisitorService.prototype.updateUser = function (user) {
-        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url + ("/" + user.id), user);
-    };
-    VisitorService.prototype.deleteUser = function (user) {
-        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url + ("/" + user.id));
-    };
-    VisitorService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-    ]; };
-    VisitorService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], VisitorService);
-    return VisitorService;
-}());
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" fxLayout=\"row\" fxLayoutAlign=\"center none\">\n  <div fxFlex=\"95%\">\n\n    <mat-card>\n      <mat-card-content>\n        <h2>Visitantes</h2>\n\n        <mat-form-field>\n          <mat-label>Filter</mat-label>\n          <input matInput (keyup)=\"applyFilter($event)\" placeholder=\"Pesquisar por Administradores\">\n        </mat-form-field>\n\n        <table mat-table [dataSource]=\"dataSource\" matSort>\n\n          <!-- Position Column -->\n          <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.id }} </td>\n          </ng-container>\n        \n          <!-- Name Column -->\n          <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.name }} </td>\n          </ng-container>\n        \n          <!-- Email Column -->\n          <ng-container matColumnDef=\"email\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.email }} </td>\n          </ng-container>\n        \n          <!-- Status Column -->\n          <ng-container matColumnDef=\"status\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.status == 1 ? 'Ativo' : 'Inativo' }} </td>\n          </ng-container>\n          \n          <!-- Created_at Column -->\n          <!-- <ng-container matColumnDef=\"entry\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registro de entrada </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.created_at | date: 'dd/MM/yyyy' }} às {{ user.created_at | date: 'hh:mm' }}</td>\n          </ng-container> -->\n          \n          <!-- Check-out Column -->\n          <!-- <ng-container matColumnDef=\"check-out\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registro de saída </th>\n            <td mat-cell *matCellDef=\"let user\"> {{ user.created_at | date: 'dd/MM/yyyy' }} às {{ user.created_at | date: 'hh:mm' }}</td>\n          </ng-container> -->\n          \n          <!-- Icon Column -->\n          <ng-container matColumnDef=\"icon\">\n            <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>\n            <td mat-cell *matCellDef=\"let user\"> \n              <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalCreate(user)\">edit</mat-icon>\n              <mat-icon aria-hidden=\"false\" aria-label=\"Example home icon\" (click)=\"openModalDelete(user)\">delete</mat-icon> \n            </td>\n          </ng-container>\n        \n          <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n          <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n\n        <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\n        \n      </mat-card-content>\n    </mat-card>\n\n  </div>\n</div>\n\n\n<div class=\"example-button-row\"> \n  <button mat-fab color=\"primary\" aria-label=\"Example icon-button with a heart icon\" (click)=\"openModalCreate(null)\">\n    <mat-icon>add</mat-icon>\n  </button> \n</div>");
 
 /***/ }),
 
@@ -159,6 +108,8 @@ var CreateEditVisitorComponent = /** @class */ (function () {
         this.formG.get('name').setValue(this.service.user.name);
         this.formG.get('email').setValue(this.service.user.email);
         this.formG.get('cpf').setValue(this.service.user.cpf);
+        this.formG.get('date_birth').setValue(this.service.user.date_birth);
+        this.formG.get('room').setValue(this.service.user.room);
         this.formG.get('email').disable({ onlySelf: true });
     };
     CreateEditVisitorComponent.prototype.getRooms = function () {
@@ -291,7 +242,7 @@ var DetailsVisitorComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("table {\r\n    width: 100%;\r\n}\r\n\r\nth.mat-sort-header-sorted {\r\n    color: black;\r\n}\r\n\r\n.mat-form-field {\r\n    font-size: 14px;\r\n    width: 100%;\r\n}\r\n\r\ntd, th {\r\n    width: 25%;\r\n}\r\n\r\n.mat-column-id\r\n{\r\n    width: 6%; \r\n}\r\n\r\n.mat-column-name\r\n{\r\n    width: 20%; \r\n}\r\n\r\n.mat-column-icon\r\n{\r\n    width: 10%; \r\n}\r\n\r\n.example-button-row button,\r\n.example-button-row a {\r\n    position: fixed;\r\n    bottom: 35px;\r\n    right: 2%;\r\n}\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlcnMvdmlzaXRvci9saXN0LXZpc2l0b3JzL2xpc3QtdmlzaXRvcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBR0E7SUFDSSxlQUFlO0lBQ2YsV0FBVztBQUNmOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBOztJQUVJLFNBQVM7QUFDYjs7QUFFQTs7SUFFSSxVQUFVO0FBQ2Q7O0FBRUE7O0lBRUksVUFBVTtBQUNkOztBQUVBOztJQUVJLGVBQWU7SUFDZixZQUFZO0lBQ1osU0FBUztBQUNiIiwiZmlsZSI6InNyYy9hcHAvdXNlcnMvdmlzaXRvci9saXN0LXZpc2l0b3JzL2xpc3QtdmlzaXRvcnMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50aC5tYXQtc29ydC1oZWFkZXItc29ydGVkIHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG4gXHJcbiAgXHJcbi5tYXQtZm9ybS1maWVsZCB7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4gIFxyXG50ZCwgdGgge1xyXG4gICAgd2lkdGg6IDI1JTtcclxufVxyXG5cclxuLm1hdC1jb2x1bW4taWRcclxue1xyXG4gICAgd2lkdGg6IDYlOyBcclxufVxyXG5cclxuLm1hdC1jb2x1bW4tbmFtZVxyXG57XHJcbiAgICB3aWR0aDogMjAlOyBcclxufVxyXG5cclxuLm1hdC1jb2x1bW4taWNvblxyXG57XHJcbiAgICB3aWR0aDogMTAlOyBcclxufVxyXG5cclxuLmV4YW1wbGUtYnV0dG9uLXJvdyBidXR0b24sXHJcbi5leGFtcGxlLWJ1dHRvbi1yb3cgYSB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDM1cHg7XHJcbiAgICByaWdodDogMiU7XHJcbn1cclxuICAiXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("table {\r\n    width: 100%;\r\n}\r\n\r\nth.mat-sort-header-sorted {\r\n    color: black;\r\n}\r\n\r\n.mat-form-field {\r\n    font-size: 14px;\r\n    width: 100%;\r\n}\r\n\r\ntd, th {\r\n    /* width: 25%; */\r\n    /* border: 1px solid gray; */\r\n}\r\n\r\n.mat-column-id\r\n{\r\n    width: 6%; \r\n}\r\n\r\n.mat-column-name\r\n{\r\n    width: 20%; \r\n}\r\n\r\n.mat-column-email\r\n{\r\n    width: 20%; \r\n}\r\n\r\n.mat-column-status\r\n{\r\n    width: 5%; \r\n}\r\n\r\n.mat-column-icon\r\n{\r\n    width: 15%; \r\n}\r\n\r\n.example-button-row button,\r\n.example-button-row a {\r\n    position: fixed;\r\n    bottom: 35px;\r\n    right: 2%;\r\n}\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlcnMvdmlzaXRvci9saXN0LXZpc2l0b3JzL2xpc3QtdmlzaXRvcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBR0E7SUFDSSxlQUFlO0lBQ2YsV0FBVztBQUNmOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLDRCQUE0QjtBQUNoQzs7QUFFQTs7SUFFSSxTQUFTO0FBQ2I7O0FBRUE7O0lBRUksVUFBVTtBQUNkOztBQUVBOztJQUVJLFVBQVU7QUFDZDs7QUFFQTs7SUFFSSxTQUFTO0FBQ2I7O0FBRUE7O0lBRUksVUFBVTtBQUNkOztBQUVBOztJQUVJLGVBQWU7SUFDZixZQUFZO0lBQ1osU0FBUztBQUNiIiwiZmlsZSI6InNyYy9hcHAvdXNlcnMvdmlzaXRvci9saXN0LXZpc2l0b3JzL2xpc3QtdmlzaXRvcnMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50aC5tYXQtc29ydC1oZWFkZXItc29ydGVkIHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG4gXHJcbiAgXHJcbi5tYXQtZm9ybS1maWVsZCB7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4gIFxyXG50ZCwgdGgge1xyXG4gICAgLyogd2lkdGg6IDI1JTsgKi9cclxuICAgIC8qIGJvcmRlcjogMXB4IHNvbGlkIGdyYXk7ICovXHJcbn1cclxuXHJcbi5tYXQtY29sdW1uLWlkXHJcbntcclxuICAgIHdpZHRoOiA2JTsgXHJcbn1cclxuXHJcbi5tYXQtY29sdW1uLW5hbWVcclxue1xyXG4gICAgd2lkdGg6IDIwJTsgXHJcbn1cclxuXHJcbi5tYXQtY29sdW1uLWVtYWlsXHJcbntcclxuICAgIHdpZHRoOiAyMCU7IFxyXG59XHJcblxyXG4ubWF0LWNvbHVtbi1zdGF0dXNcclxue1xyXG4gICAgd2lkdGg6IDUlOyBcclxufVxyXG5cclxuLm1hdC1jb2x1bW4taWNvblxyXG57XHJcbiAgICB3aWR0aDogMTUlOyBcclxufVxyXG5cclxuLmV4YW1wbGUtYnV0dG9uLXJvdyBidXR0b24sXHJcbi5leGFtcGxlLWJ1dHRvbi1yb3cgYSB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDM1cHg7XHJcbiAgICByaWdodDogMiU7XHJcbn1cclxuICAiXX0= */");
 
 /***/ }),
 
@@ -344,6 +295,7 @@ var ListVisitorsComponent = /** @class */ (function () {
         var _this = this;
         this.service.getUsers()
             .subscribe(function (res) {
+            console.log(res);
             _this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableDataSource"](res);
             _this.dataSource.paginator = _this.paginator;
             _this.dataSource.sort = _this.sort;
@@ -353,7 +305,7 @@ var ListVisitorsComponent = /** @class */ (function () {
         var _this = this;
         this.service.user = Object.assign({}, user);
         var dialogRef = this.dialog.open(_create_edit_visitor_create_edit_visitor_component__WEBPACK_IMPORTED_MODULE_1__["CreateEditVisitorComponent"], {
-            height: '500px',
+            height: '430px',
             width: '600px',
         });
         dialogRef.afterClosed().subscribe(function (res) {

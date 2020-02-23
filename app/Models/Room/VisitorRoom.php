@@ -9,6 +9,6 @@ class VisitorRoom extends Model
     public $timestamps = false; 
 
     protected $fillable = [
-        'user_id', 'room_id'
+        'user_id', 'room_id', 'checkin', 'checkout'	
     ];
 }
