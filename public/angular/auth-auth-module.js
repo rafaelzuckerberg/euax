@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container login-container\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n    <form [formGroup]=\"loginForm\" fxFlex=\"30%\" fxFlex.sm=\"50%\" fxFlex.xs=\"90%\">\r\n        <mat-card>\r\n            <mat-card-title>angular-material-template</mat-card-title>\r\n            <mat-card-subtitle>Log in to your account</mat-card-subtitle>\r\n            <mat-card-content>\r\n\r\n                <mat-form-field class=\"full-width\">\r\n                    <input id=\"emailInput\" matInput placeholder=\"Email\" formControlName=\"email\" autocomplete=\"email\"\r\n                        type=\"email\">\r\n\r\n                    <mat-error id=\"invalidEmailError\" *ngIf=\"loginForm.controls['email'].hasError('email')\">\r\n                        Please enter a valid email address\r\n                    </mat-error>\r\n                    <mat-error id=\"requiredEmailError\" *ngIf=\"loginForm.controls['email'].hasError('required')\">\r\n                        Email is\r\n                        <strong>required</strong>\r\n                    </mat-error>\r\n\r\n                </mat-form-field>\r\n\r\n                <mat-form-field class=\"full-width\">\r\n                    <input id=\"passwordInput\" matInput placeholder=\"Password\" formControlName=\"password\" type=\"password\"\r\n                        autocomplete=\"current-password\">\r\n                    <mat-error id=\"requiredPasswordError\" *ngIf=\"loginForm.controls['email'].hasError('required')\">\r\n                        Password is\r\n                        <strong>required</strong>\r\n                    </mat-error>\r\n                </mat-form-field>\r\n\r\n                <div class=\"full-width\">\r\n                    <mat-slide-toggle formControlName=\"rememberMe\">Remember my email address</mat-slide-toggle>\r\n                </div>\r\n\r\n            </mat-card-content>\r\n\r\n            <mat-card-actions class=\"login-actions\">\r\n                <button mat-raised-button id=\"login\" color=\"primary\" [disabled]=\"loginForm.invalid || loading\"\r\n                    (click)=\"login()\">Login</button>\r\n                <button mat-button id=\"resetPassword\" (click)=\"resetPassword()\" type=\"button\">Reset Password</button>\r\n            </mat-card-actions>\r\n\r\n        </mat-card>\r\n\r\n        <mat-progress-bar *ngIf=\"loading\" mode=\"indeterminate\"></mat-progress-bar>\r\n    </form>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container login-container\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n    <form [formGroup]=\"loginForm\" fxFlex=\"30%\" fxFlex.sm=\"50%\" fxFlex.xs=\"90%\">\r\n        <mat-card>\r\n            <mat-card-title>Tony Stark</mat-card-title>\r\n            <mat-card-subtitle>Monitorado por JARVIS</mat-card-subtitle>\r\n            <mat-card-content>\r\n\r\n                <mat-form-field class=\"full-width\">\r\n                    <input id=\"emailInput\" matInput placeholder=\"Email\" formControlName=\"email\" autocomplete=\"email\"\r\n                        type=\"email\">\r\n\r\n                    <mat-error id=\"invalidEmailError\" *ngIf=\"loginForm.controls['email'].hasError('email')\">\r\n                        Please enter a valid email address\r\n                    </mat-error>\r\n                    <mat-error id=\"requiredEmailError\" *ngIf=\"loginForm.controls['email'].hasError('required')\">\r\n                        Email is\r\n                        <strong>required</strong>\r\n                    </mat-error>\r\n\r\n                </mat-form-field>\r\n\r\n                <mat-form-field class=\"full-width\">\r\n                    <input id=\"passwordInput\" matInput placeholder=\"Password\" formControlName=\"password\" type=\"password\"\r\n                        autocomplete=\"current-password\">\r\n                    <mat-error id=\"requiredPasswordError\" *ngIf=\"loginForm.controls['email'].hasError('required')\">\r\n                        Password is\r\n                        <strong>required</strong>\r\n                    </mat-error>\r\n                </mat-form-field>\r\n\r\n                <div class=\"full-width\">\r\n                    <mat-slide-toggle formControlName=\"rememberMe\">Remember my email address</mat-slide-toggle>\r\n                </div>\r\n\r\n            </mat-card-content>\r\n\r\n            <mat-card-actions class=\"login-actions\">\r\n                <button mat-raised-button id=\"login\" color=\"primary\" [disabled]=\"loginForm.invalid || loading\"\r\n                    (click)=\"login()\">Login</button>\r\n                <button mat-button id=\"resetPassword\" (click)=\"resetPassword()\" type=\"button\">Reset Password</button>\r\n            </mat-card-actions>\r\n\r\n        </mat-card>\r\n\r\n        <mat-progress-bar *ngIf=\"loading\" mode=\"indeterminate\"></mat-progress-bar>\r\n    </form>\r\n</div>");
 
 /***/ }),
 
@@ -175,7 +175,7 @@ var LoginComponent = /** @class */ (function () {
         this.authenticationService = authenticationService;
     }
     LoginComponent.prototype.ngOnInit = function () {
-        this.titleService.setTitle('angular-material-template - Login');
+        this.titleService.setTitle('Login');
         this.authenticationService.logout();
         this.createForm();
     };
@@ -202,9 +202,9 @@ var LoginComponent = /** @class */ (function () {
             else {
                 localStorage.removeItem('savedUserEmail');
             }
-            _this.router.navigate(['/']);
+            _this.router.navigate(['/dashboard']);
         }, function (error) {
-            _this.notificationService.openSnackBar(error.error);
+            _this.notificationService.openSnackBar(error.error['message']);
             _this.loading = false;
         });
     };

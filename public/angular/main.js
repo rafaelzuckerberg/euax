@@ -334,7 +334,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"navbar-container\" [class.example-is-mobile]=\"mobileQuery.matches\">\r\n\r\n  <!-- Top navbar -->\r\n  <mat-toolbar class=\"navbar\" color=\"primary\">\r\n\r\n    <button mat-icon-button (click)=\"snav.toggle()\">\r\n      <mat-icon>menu</mat-icon>\r\n    </button>\r\n\r\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\" matTooltip=\"Home\">\r\n      <h1>\r\n        Stark\r\n      </h1>\r\n    </a>\r\n\r\n    <span class=\"navbar-spacer\"></span>\r\n\r\n    <button mat-icon-button [matMenuTriggerFor]=\"notificationMenu\">\r\n      <mat-icon matBadge=\"2\" matBadgeColor=\"accent\">notifications</mat-icon>\r\n    </button>\r\n    <mat-menu #notificationMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item>\r\n        <span>You have new tasks</span>\r\n      </a>\r\n      <a mat-menu-item>\r\n        <span>You have a new message</span>\r\n      </a>\r\n\r\n    </mat-menu>\r\n\r\n\r\n\r\n    <button mat-button [matMenuTriggerFor]=\"userMenu\">\r\n      <mat-icon>person</mat-icon>\r\n      <span fxShow fxHide.xs>\r\n        {{userName}}\r\n      </span>\r\n    </button>\r\n    <mat-menu #userMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item [routerLink]=\"['/account/profile']\">\r\n        <mat-icon>person</mat-icon>\r\n        <span>Account</span>\r\n      </a>\r\n\r\n      <a mat-menu-item [routerLink]=\"['/auth/login']\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </a>\r\n\r\n    </mat-menu>\r\n\r\n  </mat-toolbar>\r\n\r\n  <mat-sidenav-container class=\"navbar-sidenav-container\">\r\n    <!-- Side nav -->\r\n    <mat-sidenav #snav [opened]=\"!mobileQuery.matches\" [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n      [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" class=\"sidenav\">\r\n\r\n      <mat-nav-list>\r\n        <h3 mat-subheader>Home</h3>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            dashboard\r\n          </mat-icon>\r\n          <p mat-line> Dashboard </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/administradores']\">\r\n          <mat-icon mat-list-icon>person</mat-icon>\r\n          <p mat-line> Administradores </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/visitantes']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            people\r\n          </mat-icon>\r\n          <p mat-line> Visitantes </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/salas']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            business\r\n          </mat-icon>\r\n          <p mat-line> Salas </p>\r\n        </a>\r\n       \r\n        <a mat-list-item [routerLink]=\"['/dashboard/checkout']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            done_outline\r\n          </mat-icon>\r\n          <p mat-line> Check-Outs </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/account/profile']\">\r\n          <mat-icon mat-list-icon>person</mat-icon>\r\n          <p mat-line> Account </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/auth/login']\">\r\n          <mat-icon mat-list-icon>exit_to_app</mat-icon>\r\n          <p mat-line> Log out </p>\r\n        </a>\r\n\r\n        <mat-divider></mat-divider>\r\n\r\n        <h3 mat-subheader>Resources</h3>\r\n\r\n        <a mat-list-item [routerLink]=\"['/icons']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            toll\r\n          </mat-icon>\r\n          <p mat-line> Icons </p>\r\n        </a>\r\n        <a mat-list-item [routerLink]=\"['/typography']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            font_download\r\n          </mat-icon>\r\n          <p mat-line> Typography </p>\r\n        </a>\r\n\r\n        <a mat-list-item href=\"https://material.angular.io/components/categories\" target=\"_blank\">\r\n          <mat-icon mat-list-icon>\r\n            link\r\n          </mat-icon>\r\n          <p mat-line> Material Components </p>\r\n        </a>\r\n\r\n        <a id=\"push-bottom\" mat-list-item [routerLink]=\"['/about']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            info_outline\r\n          </mat-icon>\r\n          <p mat-line> About </p>\r\n        </a>\r\n      </mat-nav-list>\r\n\r\n    </mat-sidenav>\r\n\r\n    <!-- Main content -->\r\n    <mat-sidenav-content class=\"sidenav-content\">\r\n\r\n      <div class=\"progress-bar-container\">\r\n        <mat-progress-bar color=\"accent\" mode=\"indeterminate\" *ngIf=\"spinnerService.visibility | async\">\r\n        </mat-progress-bar>\r\n        <!-- <mat-spinner class=\"spinner\" [diameter]=\"50\" *ngIf=\"showSpinner\"></mat-spinner> -->\r\n      </div>\r\n\r\n\r\n      <router-outlet></router-outlet>\r\n\r\n    </mat-sidenav-content>\r\n  </mat-sidenav-container>\r\n\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"navbar-container\" [class.example-is-mobile]=\"mobileQuery.matches\">\r\n\r\n  <!-- Top navbar -->\r\n  <mat-toolbar class=\"navbar\" color=\"primary\">\r\n\r\n    <button mat-icon-button (click)=\"snav.toggle()\">\r\n      <mat-icon>menu</mat-icon>\r\n    </button>\r\n\r\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\" matTooltip=\"Home\">\r\n      <h1>\r\n        Tony Stark\r\n      </h1>\r\n    </a>\r\n\r\n    <span class=\"navbar-spacer\"></span>\r\n\r\n    <button mat-icon-button [matMenuTriggerFor]=\"notificationMenu\">\r\n      <mat-icon matBadge=\"2\" matBadgeColor=\"accent\">notifications</mat-icon>\r\n    </button>\r\n    <mat-menu #notificationMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item>\r\n        <span>You have new tasks</span>\r\n      </a>\r\n      <a mat-menu-item>\r\n        <span>You have a new message</span>\r\n      </a>\r\n\r\n    </mat-menu>\r\n\r\n\r\n\r\n    <button mat-button [matMenuTriggerFor]=\"userMenu\">\r\n      <mat-icon>person</mat-icon>\r\n      <span fxShow fxHide.xs>\r\n        {{userName}}\r\n      </span>\r\n    </button>\r\n    <mat-menu #userMenu=\"matMenu\" xPosition=\"before\" yPosition=\"above\" [overlapTrigger]=\"false\">\r\n\r\n      <a mat-menu-item [routerLink]=\"['/account/profile']\">\r\n        <mat-icon>person</mat-icon>\r\n        <span>Account</span>\r\n      </a>\r\n\r\n      <a mat-menu-item [routerLink]=\"['/auth/login']\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </a>\r\n\r\n      <!-- <button mat-menu-item (click)=\"logout()\">\r\n        <mat-icon>exit_to_app</mat-icon>\r\n        <span>Log out</span>\r\n      </button> -->\r\n\r\n    </mat-menu>\r\n\r\n  </mat-toolbar>\r\n\r\n  <mat-sidenav-container class=\"navbar-sidenav-container\">\r\n    <!-- Side nav -->\r\n    <mat-sidenav #snav [opened]=\"!mobileQuery.matches\" [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n      [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" class=\"sidenav\">\r\n\r\n      <mat-nav-list>\r\n        <h3 mat-subheader>Home</h3>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            dashboard\r\n          </mat-icon>\r\n          <p mat-line> Dashboard </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/administradores']\">\r\n          <mat-icon mat-list-icon>person</mat-icon>\r\n          <p mat-line> Administradores </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/salas']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            business\r\n          </mat-icon>\r\n          <p mat-line> Salas </p>\r\n        </a>\r\n\r\n        <a mat-list-item [routerLink]=\"['/dashboard/visitantes']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            people\r\n          </mat-icon>\r\n          <p mat-line> Visitantes </p>\r\n        </a>\r\n       \r\n        <a mat-list-item [routerLink]=\"['/dashboard/checkout']\" routerLinkActive=\"active\">\r\n          <mat-icon mat-list-icon>\r\n            done_outline\r\n          </mat-icon>\r\n          <p mat-line> Check-Outs </p>\r\n        </a> \r\n\r\n        <mat-divider></mat-divider>\r\n\r\n      </mat-nav-list>\r\n\r\n    </mat-sidenav>\r\n\r\n    <!-- Main content -->\r\n    <mat-sidenav-content class=\"sidenav-content\">\r\n\r\n      <div class=\"progress-bar-container\">\r\n        <mat-progress-bar color=\"accent\" mode=\"indeterminate\" *ngIf=\"spinnerService.visibility | async\">\r\n        </mat-progress-bar>\r\n        <!-- <mat-spinner class=\"spinner\" [diameter]=\"50\" *ngIf=\"showSpinner\"></mat-spinner> -->\r\n      </div>\r\n\r\n\r\n      <router-outlet></router-outlet>\r\n\r\n    </mat-sidenav-content>\r\n  </mat-sidenav-container>\r\n\r\n</div>");
 
 /***/ }),
 
@@ -1188,10 +1188,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var rxjs_add_operator_delay__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/delay */ "./node_modules/rxjs-compat/_esm5/add/operator/delay.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var jwt_decode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jwt-decode */ "./node_modules/jwt-decode/lib/index.js");
+/* harmony import */ var jwt_decode__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jwt_decode__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var rxjs_add_operator_delay__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/add/operator/delay */ "./node_modules/rxjs-compat/_esm5/add/operator/delay.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
 
 
 
@@ -1203,22 +1208,24 @@ var AuthenticationService = /** @class */ (function () {
     function AuthenticationService(http, localStorage) {
         this.http = http;
         this.localStorage = localStorage;
+        this.url = 'login';
     }
     AuthenticationService.prototype.login = function (email, password) {
         var _this = this;
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(true).delay(1000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function ( /*response*/) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"].api + this.url, { email: email, password: password }).delay(1000)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
+            console.log(response);
             // set token property
-            // const decodedToken = jwt_decode(response['token']);
+            var decodedToken = jwt_decode__WEBPACK_IMPORTED_MODULE_4__(response['token']);
             // store email and jwt token in local storage to keep user logged in between page refreshes
             _this.localStorage.setItem('currentUser', JSON.stringify({
-                token: 'aisdnaksjdn,axmnczm',
+                token: decodedToken,
                 isAdmin: true,
-                email: 'john.doe@gmail.com',
+                email: email,
                 id: '12312323232',
-                alias: 'john.doe@gmail.com'.split('@')[0],
-                expiration: moment__WEBPACK_IMPORTED_MODULE_4__().add(1, 'days').toDate(),
-                fullName: 'John Doe'
+                alias: email.split('@')[0],
+                expiration: moment__WEBPACK_IMPORTED_MODULE_5__().add(1, 'days').toDate(),
+                fullName: 'Rafael Moura'
             }));
             return true;
         }));
@@ -1229,25 +1236,25 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.getCurrentUser = function () {
         // TODO: Enable after implementation
-        // return JSON.parse(this.localStorage.getItem('currentUser'));
-        return {
-            token: 'aisdnaksjdn,axmnczm',
-            isAdmin: true,
-            email: 'john.doe@gmail.com',
-            id: '12312323232',
-            alias: 'john.doe@gmail.com'.split('@')[0],
-            expiration: moment__WEBPACK_IMPORTED_MODULE_4__().add(1, 'days').toDate(),
-            fullName: 'John Doe'
-        };
+        return JSON.parse(this.localStorage.getItem('currentUser'));
+        // return {
+        //     token: 'aisdnaksjdn,axmnczm',
+        //     isAdmin: true,
+        //     email: 'john.doe@gmail.com',
+        //     id: '12312323232',
+        //     alias: 'john.doe@gmail.com'.split('@')[0],
+        //     expiration: moment().add(1, 'days').toDate(),
+        //     fullName: 'John Doe'
+        // };
     };
     AuthenticationService.prototype.passwordResetRequest = function (email) {
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(true).delay(1000);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(true).delay(1000);
     };
     AuthenticationService.prototype.changePassword = function (email, currentPwd, newPwd) {
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(true).delay(1000);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(true).delay(1000);
     };
     AuthenticationService.prototype.passwordReset = function (email, token, password, confirmPassword) {
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(true).delay(1000);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(true).delay(1000);
     };
     AuthenticationService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
@@ -1759,6 +1766,9 @@ var LayoutComponent = /** @class */ (function () {
     LayoutComponent.prototype.ngAfterViewInit = function () {
         this.changeDetectorRef.detectChanges();
     };
+    LayoutComponent.prototype.logout = function () {
+        console.log('Sair');
+    };
     LayoutComponent.ctorParameters = function () { return [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
         { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
@@ -1991,7 +2001,7 @@ var environment = {
     production: false,
     logLevel: ngx_logger__WEBPACK_IMPORTED_MODULE_1__["NgxLoggerLevel"].TRACE,
     serverLogLevel: ngx_logger__WEBPACK_IMPORTED_MODULE_1__["NgxLoggerLevel"].OFF,
-    api: 'http://127.0.0.1:8000/api/dashboard/'
+    api: 'http://127.0.0.1:8000/api/'
 };
 
 
@@ -2035,7 +2045,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\emprego\starkindustries\angular\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\emprego\euax\angular\src\main.ts */"./src/main.ts");
 
 
 /***/ })

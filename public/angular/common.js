@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 var RoomService = /** @class */ (function () {
     function RoomService(http) {
         this.http = http;
-        this.url = 'rooms';
+        this.url = 'dashboard/rooms';
     }
     RoomService.prototype.getRooms = function () {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url);
@@ -72,7 +72,7 @@ __webpack_require__.r(__webpack_exports__);
 var VisitorService = /** @class */ (function () {
     function VisitorService(http) {
         this.http = http;
-        this.url = 'visitors';
+        this.url = 'dashboard/visitors';
     }
     VisitorService.prototype.getUsers = function () {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].api + this.url);
