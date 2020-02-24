@@ -1,0 +1,25 @@
+<h2>{{ canEdit ? 'Editar' : 'Cadastrar' }} Administradores</h2>
+
+<div class="example-container">
+
+    <form [formGroup]="formG" (ngSubmit)="submitForm()">
+        <mat-form-field>
+            <mat-label>Digite o nome do usuário</mat-label>
+            <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Digite o email do usuário</mat-label>
+            <input type="email" matInput formControlName="email">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Digite a senha do usuário</mat-label>
+            <input type="password" matInput formControlName="password">
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary" [disabled]="!formG.valid || clicked">{{ canEdit ? 'Editar' : 'Cadastrar' }}</button>
+    </form>
+    
+    
+</div>   

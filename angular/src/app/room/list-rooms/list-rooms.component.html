@@ -1,0 +1,66 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+  
+      <mat-card>
+        <mat-card-content>
+          <h2>Salas</h2>
+
+          <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Pesquisar por Administradores">
+          </mat-form-field>
+  
+          <table mat-table [dataSource]="dataSource" matSort>
+  
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let user"> {{ user.id }} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+              <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
+            </ng-container>
+
+             <!-- Quantidade de usuários Column -->
+             <ng-container matColumnDef="quant">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantidade de visitantes </th>
+              <td mat-cell *matCellDef="let user"> {{ user['quantidade'] != null ? user['quantidade'] : 0 }} </td>
+            </ng-container>
+            
+            <!-- Status de usuários Column -->
+             <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+              <td mat-cell *matCellDef="let user"> {{ user['quantidade'] == 3 ? 'Ocupada' : 'Liberada' }} </td>
+            </ng-container>
+        
+            
+            <!-- Icon Column -->
+            <ng-container matColumnDef="icon">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+              <td mat-cell *matCellDef="let user"> 
+                <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openModalCreate(user)">edit</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openModalDelete(user)">delete</mat-icon>
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          
+        </mat-card-content>
+      </mat-card>
+  
+    </div>
+  </div>
+
+
+  <div class="example-button-row"> 
+    <button mat-fab color="primary" aria-label="Example icon-button with a heart icon" (click)="openModalCreate(null)">
+      <mat-icon>add</mat-icon>
+    </button> 
+  </div>

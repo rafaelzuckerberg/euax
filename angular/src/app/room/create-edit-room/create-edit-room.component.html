@@ -1,0 +1,15 @@
+<h2>{{ canEdit ? 'Editar' : 'Cadastrar' }} Salas</h2>
+
+<div class="example-container">
+
+    <form [formGroup]="formG" (ngSubmit)="submitForm()">
+        <mat-form-field>
+            <mat-label>Digite o nome da Sala</mat-label>
+            <input type="text" matInput formControlName="name">
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary" [disabled]="!formG.valid || clicked">{{ canEdit ? 'Editar' : 'Cadastrar' }}</button>
+    </form>
+    
+    
+</div>   

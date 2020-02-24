@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+ 
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+td, th {
+    /* width: 25%; */
+}
+
+.mat-column-id
+{
+    width: 6%; 
+}
+
+.mat-column-name
+{
+    width: 20%; 
+}
+
+.mat-column-icon
+{
+    width: 10%; 
+}
+
+.example-button-row button,
+.example-button-row a {
+    position: fixed;
+    bottom: 35px;
+    right: 2%;
+}
+  

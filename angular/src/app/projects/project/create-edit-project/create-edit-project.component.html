@@ -1,0 +1,29 @@
+<h2>{{ canEdit ? 'Editar' : 'Cadastrar' }} Projeto</h2>
+
+<div class="example-container">
+
+    <form [formGroup]="formG" (ngSubmit)="submitForm()">
+        <mat-form-field>
+            <mat-label>Digite o nome do usuário</mat-label>
+            <input type="text" matInput formControlName="project_name">
+        </mat-form-field>  
+
+        <mat-form-field>
+            <mat-label>Data Início</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="begin_date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Data Fim</mat-label>
+                <input matInput [matDatepicker]="_picker" formControlName="end_date">
+                <mat-datepicker-toggle matSuffix [for]="_picker"></mat-datepicker-toggle>
+            <mat-datepicker #_picker></mat-datepicker>
+        </mat-form-field> 
+    
+        <button mat-raised-button color="primary" [disabled]="!formG.valid || clicked">{{ canEdit ? 'Editar' : 'Cadastrar' }}</button>
+    </form>
+    
+    
+</div>   
